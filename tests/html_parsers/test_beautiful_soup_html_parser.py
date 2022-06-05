@@ -1,8 +1,5 @@
-import pytest
-import requests
 from bs4 import BeautifulSoup, Tag
-from html_downloader import Requests
-from html_parser import BeautifulSoupHTMLParser
+from html_parsers.beautiful_soup_html_parser import BeautifulSoupHTMLParser
 
 HTML = """
 <!doctype html>

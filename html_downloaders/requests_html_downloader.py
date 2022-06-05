@@ -1,16 +1,8 @@
-from abc import ABC, abstractmethod
 import requests
+from core.html_downloader import HTMLDownloader
 
 
-class HTMLDownloader(ABC):
-    """Download a HTML from an url"""
-
-    @abstractmethod
-    def get_html(self, url: str) -> str:
-        pass
-
-
-class Requests(HTMLDownloader):
+class RequestsHTMLDownloader(HTMLDownloader):
     def __init__(self, configs) -> None:
         self.configs = configs
 
@@ -25,7 +17,7 @@ def __main():
     import lib.config_section_reader as cfg
 
     requests = cfg.ConfigSectionReader("./configs/html_downloaders.ini", "Requests")
-    html_downloader = Requests(requests.configs)
+    html_downloader = RequestsHTMLDownloader(requests.configs)
     html_downloader.get_html("https://google.com")
 
 

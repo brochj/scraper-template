@@ -1,14 +1,6 @@
-from bs4 import BeautifulSoup, Tag
-from abc import ABC, abstractmethod
+from bs4 import BeautifulSoup
 from typing import Any
-
-
-class HTMLParser(ABC):
-    """Download a HTML from an url"""
-
-    @abstractmethod
-    def parse_html(self, html: str) -> Any:
-        pass
+from core.html_parser import HTMLParser
 
 
 class BeautifulSoupHTMLParser(HTMLParser):
@@ -21,17 +13,20 @@ class BeautifulSoupHTMLParser(HTMLParser):
 
 
 if __name__ == "__main__":
+    # Just for testing
     HTML = """
-<!doctype html>
-<html>
-  <head>
-    <title>This is the title of the webpage!</title>
-  </head>
-  <body>
-    <p>This is an example paragraph. Anything in the <strong>body</strong> tag will appear on the page, just like this <strong>p</strong> tag and its contents.</p>
-  </body>
-</html>
-"""
+        <!doctype html>
+        <html>
+            <head>
+                <title>This is the title of the webpage!</title>
+            </head>
+            <body>
+                <p>
+                    This is an example paragraph. Anything in the <strong>body</strong> tag will appear on the page.
+                </p>
+            </body>
+        </html>
+        """
 
     html_parser = BeautifulSoupHTMLParser()
     parsed_html = html_parser.parse_html(HTML)
