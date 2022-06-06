@@ -19,6 +19,10 @@ class CrawlerBuilder(ABC):
         """Create the scraper"""
 
     @abstractmethod
+    def build_output_writer(self):
+        """Create the output writter"""
+
+    @abstractmethod
     def get_result(self):
         "Return the final crawler"
 

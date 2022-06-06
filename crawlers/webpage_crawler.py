@@ -2,6 +2,7 @@ import lib.config_section_reader as cfg
 from core.crawler_builder import CrawlerBuilder
 from html_downloaders.requests_cache_html_downloader import RequestsCacheHTMLDownloader
 from html_parsers.beautiful_soup_html_parser import BeautifulSoupHTMLParser
+from output_writers.webpage_sqlite import WebpageSqlite
 from scrapers.webpage_scraper import WebpageScraper
 
 
@@ -29,6 +30,13 @@ class WebpageCrawler(CrawlerBuilder):
     def build_scraper(self):
         return self
 
+    def build_output_writer(self):
+        CONFIG_PATH = "./configs/outputs.ini"
+        CONFIG_SECTION = "WebpageSqlite"
+        configs = cfg.ConfigSectionReader(CONFIG_PATH, CONFIG_SECTION)
+        self.output_writer = WebpageSqlite("webpage.db", configs.configs)
+        return self
+
     def get_result(self):
         self.webpage_scraper = WebpageScraper()
         return self
@@ -36,4 +44,5 @@ class WebpageCrawler(CrawlerBuilder):
     def crawl(self, url: str):
         html_downloaded = self.html_downloader.get_html(url)
         parsed_html = self.html_parser.parse_html(html_downloaded)
-        return self.webpage_scraper.scrape(parsed_html, url)
+        webpage_model = self.webpage_scraper.scrape(parsed_html, url)
+        self.output_writer.save(webpage_model)

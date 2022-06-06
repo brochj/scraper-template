@@ -11,5 +11,6 @@ class Director:
             .build_configurations()
             .build_html_downloader()
             .build_html_parser()
+            .build_output_writer()
             .get_result()
         )
