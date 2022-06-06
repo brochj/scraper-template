@@ -2,7 +2,7 @@ from dataclasses import dataclass
 
 from bs4 import BeautifulSoup, ResultSet, Tag
 
-from models.model import Model
+from src.core.model import Model
 
 
 @dataclass(init=False)

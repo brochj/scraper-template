@@ -1,17 +1,17 @@
 import json
 from typing import Union
 
-from bs4 import Tag
-from core.html_parser import HTMLParser
-from core.scraper import Scraper
-from models.webpage import Webpage
+from bs4 import BeautifulSoup, Tag
+from src.core.html_parser import HTMLParser
+from src.core.scraper import Scraper
+from src.models.webpage import Webpage
 
 
 class WebpageScraper(Scraper):
     def __init__(self, model: Webpage = Webpage()) -> None:
         super().__init__(model)
 
-    def scrape(self, html, url) -> Webpage:
+    def scrape(self, html: BeautifulSoup, url: str) -> Webpage:
         self.html = html
         self.model.url = url
         self.model.html = html
@@ -48,9 +48,9 @@ class WebpageScraper(Scraper):
     def get_scripts(self):
         return self.safeGet(self.html, "script")
 
-    def get_json_scripts(self):
+    def get_json_scripts(self) -> list[dict[str, str]]:
         scripts = self.safeGet(self.html, "script[type='application/ld+json']")
-        scripts_list = []
+        scripts_list: list[dict[str, str]] = list()
         for script in scripts:
             scripts_list.append(json.loads(script.string))
         return scripts_list

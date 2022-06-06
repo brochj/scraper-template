@@ -1,5 +1,5 @@
 import requests
-from core.html_downloader import HTMLDownloader
+from src.core.html_downloader import HTMLDownloader
 
 
 class RequestsHTMLDownloader(HTMLDownloader):

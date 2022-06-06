@@ -1,5 +1,5 @@
 import requests_cache
-from core.html_downloader import HTMLDownloader
+from src.core.html_downloader import HTMLDownloader
 
 
 class RequestsCacheHTMLDownloader(HTMLDownloader):

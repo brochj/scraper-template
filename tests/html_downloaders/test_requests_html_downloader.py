@@ -1,6 +1,6 @@
 import pytest
 import requests
-from html_downloaders.requests_html_downloader import RequestsHTMLDownloader
+from src.html_downloaders.requests_html_downloader import RequestsHTMLDownloader
 
 
 def test_get_html_validSite_shouldReturnAString():

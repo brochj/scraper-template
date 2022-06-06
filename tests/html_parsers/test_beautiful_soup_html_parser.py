@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup, Tag
-from html_parsers.beautiful_soup_html_parser import BeautifulSoupHTMLParser
+from src.html_parsers.beautiful_soup_html_parser import BeautifulSoupHTMLParser
 
 HTML = """
 <!doctype html>

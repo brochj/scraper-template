@@ -1,24 +1,25 @@
 from abc import ABC, abstractmethod
-from typing import Generic, TypeVar, Union
 
-from bs4 import ResultSet, Tag
-from html_parsers.beautiful_soup_html_parser import HTMLParser
-from models.model import Model
-
-T = TypeVar("T")
+from bs4 import BeautifulSoup, ResultSet, Tag
+from src.core.model import Model
+from src.html_parsers.beautiful_soup_html_parser import HTMLParser
 
 
 class Scraper(ABC):
     def __init__(self, model: Model) -> None:
         self.model = model
 
-    def safeGet(self, pageTag, selector) -> Union[ResultSet, list]:
+    def safeGet(
+        self, pageTag: Tag | BeautifulSoup, selector: str
+    ) -> ResultSet[Tag] | list[str]:
+        childObj: ResultSet[Tag] | None
         childObj = pageTag.select(selector)
         if childObj is not None and len(childObj) > 0:
             return childObj
         return []
 
-    def safeGetOne(self, pageTag, selector) -> Union[Tag, str]:
+    def safeGetOne(self, pageTag: Tag | BeautifulSoup, selector: str) -> Tag | str:
+        childObj: ResultSet[Tag] | None
         childObj = pageTag.select(selector)
         if childObj is not None and len(childObj) > 0:
             return childObj[0]

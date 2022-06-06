@@ -1,7 +1,7 @@
 from typing import Any
 
 from bs4 import BeautifulSoup
-from core.html_parser import HTMLParser
+from src.core.html_parser import HTMLParser
 
 
 class BeautifulSoupHTMLParser(HTMLParser):

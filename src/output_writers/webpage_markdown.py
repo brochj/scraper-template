@@ -1,8 +1,7 @@
 from inspect import cleandoc
 
-from core.output_writer import OutputWriter
-from models.model import Model
-from models.webpage import Webpage
+from src.core.output_writer import OutputWriter
+from src.models.webpage import Webpage
 
 
 class WebpageMarkdownWriter(OutputWriter):

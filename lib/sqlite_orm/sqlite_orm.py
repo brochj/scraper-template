@@ -1,5 +1,5 @@
 import sqlite3
-from sqlite3 import Connection, Cursor
+from sqlite3 import Connection
 
 from bs4 import ResultSet
 

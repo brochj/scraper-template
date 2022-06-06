@@ -1,11 +1,11 @@
-from core.crawler_builder import CrawlerBuilder
+from src.core.crawler_builder import CrawlerBuilder
 
 
 class Director:
-    "The BOSS"
+    """Responsible for construct a crawler"""
 
     @staticmethod
-    def construct(crawler_builder: CrawlerBuilder) -> None:
+    def construct(crawler_builder: CrawlerBuilder) -> CrawlerBuilder:
         return (
             crawler_builder()
             .build_configurations()

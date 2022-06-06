@@ -1,8 +1,8 @@
 import os
 import sqlite3
 
-from core.director import Director
-from crawlers.webpage_crawler import WebpageCrawler
+from src.core.director import Director
+from src.crawlers.webpage_crawler import WebpageCrawler
 
 URLS = [
     "https://compartilhandobr.com/posts/red-team-operator",

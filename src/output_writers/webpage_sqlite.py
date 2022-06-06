@@ -1,7 +1,6 @@
-from models.webpage import Webpage
-
-from sqlite_orm.sqlite_orm import DataConverter as Convert
-from sqlite_orm.sqlite_orm import SQLiteConnectionHandler, SqliteORM
+from lib.sqlite_orm.sqlite_orm import DataConverter as Convert
+from lib.sqlite_orm.sqlite_orm import SQLiteConnectionHandler, SqliteORM
+from src.models.webpage import Webpage
 
 WEBPAGE_TABLE = """CREATE TABLE IF NOT EXISTS [Webpage] (
         id INTEGER PRIMARY KEY AUTOINCREMENT,

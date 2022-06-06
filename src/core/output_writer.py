@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from models.model import Model
+from src.core.model import Model
 
 
 class OutputWriter(ABC):
