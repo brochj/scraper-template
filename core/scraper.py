@@ -9,8 +9,7 @@ T = TypeVar("T")
 
 
 class Scraper(ABC):
-    def __init__(self, html: HTMLParser, model: Model) -> None:
-        self.html = html
+    def __init__(self, model: Model) -> None:
         self.model = model
 
     def safeGet(self, pageTag, selector) -> Union[ResultSet, list]:
@@ -26,5 +25,5 @@ class Scraper(ABC):
         return ""
 
     @abstractmethod
-    def scrape(self) -> Model:
+    def scrape(self, html: HTMLParser) -> Model:
         return self.model

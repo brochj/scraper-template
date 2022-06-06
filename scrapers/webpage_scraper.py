@@ -8,11 +8,13 @@ from models.webpage import Webpage
 
 
 class WebpageScraper(Scraper):
-    def __init__(self, html: HTMLParser, model: Webpage = Webpage()) -> None:
-        super().__init__(html, model)
-        self.model.html = html
+    def __init__(self, model: Webpage = Webpage()) -> None:
+        super().__init__(model)
 
-    def scrape(self) -> Webpage:
+    def scrape(self, html, url) -> Webpage:
+        self.html = html
+        self.model.url = url
+        self.model.html = html
         self.model.title = self.get_title()
         self.model.head = self.get_head()
         self.model.body = self.get_body()
