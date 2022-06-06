@@ -1,14 +1,8 @@
-from abc import ABC, abstractmethod
 from inspect import cleandoc
 
+from core.output_writer import OutputWriter
 from models.model import Model
 from models.webpage import Webpage
-
-
-class OutputWriter(ABC):
-    @abstractmethod
-    def save(self, model: Model) -> bool:
-        pass
 
 
 class WebpageMarkdownWriter(OutputWriter):
