@@ -10,7 +10,7 @@ from models.model import Model
 class Webpage(Model):
     """Contains information about webpage structure"""
 
-    url: list[Tag]
+    url: str
 
     html: BeautifulSoup
 

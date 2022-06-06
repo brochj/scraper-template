@@ -49,7 +49,7 @@ class WebpageScraper(Scraper):
         return self.safeGet(self.html, "script")
 
     def get_json_scripts(self):
-        scripts = self.safeGet(self.html, "scripts[type='application/ld+json']")
+        scripts = self.safeGet(self.html, "script[type='application/ld+json']")
         scripts_list = []
         for script in scripts:
             scripts_list.append(json.loads(script.string))

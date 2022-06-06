@@ -5,6 +5,7 @@ from crawlers.webpage_crawler import WebpageCrawler
 from html_downloaders.requests_cache_html_downloader import RequestsCacheHTMLDownloader
 from html_downloaders.requests_html_downloader import RequestsHTMLDownloader
 from html_parsers.beautiful_soup_html_parser import BeautifulSoupHTMLParser
+from output_saver import WebpageMarkdownWriter
 from scrapers.webpage_scraper import WebpageScraper
 
 URL = "https://compartilhandobr.com/posts/red-team-operator"
@@ -34,4 +35,6 @@ URL = "https://download-cursos.netlify.app/posts/red-team-operator"
 URL = "https://download-cursos.netlify.app"
 webpage_crawler = Director.construct(WebpageCrawler)
 webpage_model = webpage_crawler.crawl(URL)
-print(webpage_model.h1_headings)
+writer = WebpageMarkdownWriter()
+writer.save(webpage_model)
+print(webpage_model.json_scripts)
