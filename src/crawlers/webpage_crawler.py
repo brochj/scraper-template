@@ -1,7 +1,8 @@
 import lib.config_section_reader as cfg
 from src.core.crawler_builder import CrawlerBuilder
-from src.html_downloaders.requests_cache_html_downloader import \
-    RequestsCacheHTMLDownloader
+from src.html_downloaders.requests_cache_html_downloader import (
+    RequestsCacheHTMLDownloader,
+)
 from src.html_parsers.beautiful_soup_html_parser import BeautifulSoupHTMLParser
 from src.output_writers.webpage_sqlite import WebpageSqlite
 from src.scrapers.webpage_scraper import WebpageScraper

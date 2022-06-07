@@ -4,6 +4,7 @@ from typing import Union
 from bs4 import BeautifulSoup, Tag
 from src.core.html_parser import HTMLParser
 from src.core.scraper import Scraper
+from src.exceptions.invalid_page import InvalidPage
 from src.models.webpage import Webpage
 
 
@@ -15,6 +16,7 @@ class WebpageScraper(Scraper):
         self.html = html
         self.model.url = url
         self.model.html = html
+        # self.is_valid_page()
         self.model.title = self.get_title()
         self.model.head = self.get_head()
         self.model.body = self.get_body()
@@ -30,7 +32,15 @@ class WebpageScraper(Scraper):
         self.model.h6_headings = self.get_h6_headings()
         return self.model
 
+    def is_valid_page(self) -> None:
+        if not self.html.select("post-item"):
+            raise InvalidPage("this page does not contain a 'div.post-content'")
+        if not self.html.select("post-nav"):
+            raise InvalidPage("this page does not contain a 'div.post-nav'")
+
     def get_title(self) -> Union[Tag, str]:
+        if not self.html.select("title"):
+            raise InvalidPage("cannot get the post title")
         return self.safeGetOne(self.html, "title")
 
     def get_head(self):
