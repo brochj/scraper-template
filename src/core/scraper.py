@@ -20,9 +20,9 @@ class Scraper(ABC):
 
     def safeGetOne(self, pageTag: Tag | BeautifulSoup, selector: str) -> Tag | str:
         childObj: ResultSet[Tag] | None
-        childObj = pageTag.select(selector)
+        childObj = pageTag.select_one(selector)
         if childObj is not None and len(childObj) > 0:
-            return childObj[0]
+            return childObj
         return ""
 
     @abstractmethod

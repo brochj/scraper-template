@@ -1,4 +1,3 @@
-import os
 import sqlite3
 
 from src.core.director import Director
@@ -9,14 +8,15 @@ URLS = [
     "https://compartilhandobr.com/posts/red-team-operator",
     "https://download-cursos.netlify.app/posts/red-team-operator",
     "https://download-cursos.netlify.app",
+    "https://google.com.br",
 ]
 
-webpage_crawler = Director.construct(WebpageCrawler)
+webpage_crawler = Director.construct(WebpageCrawler())
 for url in URLS:
     try:
         webpage_crawler.crawl(url)
     except sqlite3.IntegrityError:
-        print("this url was already crawled")
+        print("This url already exists in the database")
     except InvalidPage as error_message:
         print(error_message)
     finally:

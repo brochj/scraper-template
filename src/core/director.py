@@ -7,10 +7,10 @@ class Director:
     @staticmethod
     def construct(crawler_builder: CrawlerBuilder) -> CrawlerBuilder:
         return (
-            crawler_builder()
-            .build_configurations()
+            crawler_builder.build_configurations()
             .build_html_downloader()
             .build_html_parser()
             .build_output_writer()
+            .build_scraper()
             .get_result()
         )

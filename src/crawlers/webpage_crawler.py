@@ -30,6 +30,7 @@ class WebpageCrawler(CrawlerBuilder):
         return self
 
     def build_scraper(self):
+        self.webpage_scraper = WebpageScraper()
         return self
 
     def build_output_writer(self):
@@ -40,7 +41,6 @@ class WebpageCrawler(CrawlerBuilder):
         return self
 
     def get_result(self):
-        self.webpage_scraper = WebpageScraper()
         return self
 
     def crawl(self, url: str):

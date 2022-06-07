@@ -1,7 +1,6 @@
 from dataclasses import dataclass
 
 from bs4 import BeautifulSoup, ResultSet, Tag
-
 from src.core.model import Model
 
 
@@ -17,15 +16,15 @@ class Webpage(Model):
     head: Tag
     body: Tag
 
-    links: ResultSet | list
-    meta: ResultSet | list
-    scripts: ResultSet | list
+    links: ResultSet[Tag] | list[str]
+    meta: ResultSet[Tag] | list[str]
+    scripts: ResultSet[Tag] | list[str]
 
-    json_scripts: list[dict]
+    json_scripts: list[dict[str, str]]
 
-    h1_headings: ResultSet | list
-    h2_headings: ResultSet | list
-    h3_headings: ResultSet | list
-    h4_headings: ResultSet | list
-    h5_headings: ResultSet | list
-    h6_headings: ResultSet | list
+    h1_headings: ResultSet[Tag] | list[str]
+    h2_headings: ResultSet[Tag] | list[str]
+    h3_headings: ResultSet[Tag] | list[str]
+    h4_headings: ResultSet[Tag] | list[str]
+    h5_headings: ResultSet[Tag] | list[str]
+    h6_headings: ResultSet[Tag] | list[str]

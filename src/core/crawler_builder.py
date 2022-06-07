@@ -24,7 +24,7 @@ class CrawlerBuilder(ABC):
 
     @abstractmethod
     def build_output_writer(self):
-        """Create the output writter"""
+        """Create the output writer"""
         return self
 
     @abstractmethod

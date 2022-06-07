@@ -1,5 +1,6 @@
 import pytest
 from bs4 import BeautifulSoup, ResultSet, Tag
+from src.exceptions.invalid_page import InvalidPage
 from src.html_parsers.beautiful_soup_html_parser import BeautifulSoupHTMLParser
 from src.scrapers.webpage_scraper import WebpageScraper
 
@@ -48,11 +49,11 @@ def test_get_title_titleTagExists_typeIsTag(webpage_scraper: WebpageScraper):
     assert type(titleTag) == Tag
 
 
-def test_get_title_titleTagDoesNotExist_returnsEmptyString(
+def test_get_title_titleTagDoesNotExist_raisesInvalidPage(
     webpage_scraper_invalid: WebpageScraper,
 ):
-    titleTag: Tag | str = webpage_scraper_invalid.get_title()
-    assert type(titleTag) is str
+    with pytest.raises(InvalidPage):
+        titleTag: Tag | str = webpage_scraper_invalid.get_title()
 
 
 def test_get_head_headTagExists_typeIsTag(webpage_scraper: WebpageScraper):
