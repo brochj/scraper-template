@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod
 
+from src.core.crawler import Crawler
+
 
 class CrawlerBuilder(ABC):
     @abstractmethod
@@ -28,10 +30,6 @@ class CrawlerBuilder(ABC):
         return self
 
     @abstractmethod
-    def get_result(self):
+    def get_result(self) -> Crawler:
         "Return the final crawler"
         return self
-
-    @abstractmethod
-    def crawl(self, url: str):
-        "Return the model populated"

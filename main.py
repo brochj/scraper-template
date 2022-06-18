@@ -1,7 +1,7 @@
 import sqlite3
 
 from src.core.director import Director
-from src.crawlers.webpage_crawler import WebpageCrawler
+from src.crawler_builders.webpage_crawler_builder import WebpageCrawlerBuilder
 from src.exceptions.invalid_page import InvalidPage
 
 URLS = [
@@ -11,7 +11,7 @@ URLS = [
     "https://google.com.br",
 ]
 
-webpage_crawler = Director.construct(WebpageCrawler())
+webpage_crawler = Director.construct(WebpageCrawlerBuilder())
 for url in URLS:
     try:
         webpage_crawler.crawl(url)

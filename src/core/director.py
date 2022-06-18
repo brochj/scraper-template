@@ -1,3 +1,4 @@
+from src.core.crawler import Crawler
 from src.core.crawler_builder import CrawlerBuilder
 
 
@@ -5,7 +6,7 @@ class Director:
     """Responsible for construct a crawler"""
 
     @staticmethod
-    def construct(crawler_builder: CrawlerBuilder) -> CrawlerBuilder:
+    def construct(crawler_builder: CrawlerBuilder) -> Crawler:
         return (
             crawler_builder.build_configurations()
             .build_html_downloader()
