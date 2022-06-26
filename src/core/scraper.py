@@ -21,8 +21,15 @@ class Scraper(ABC):
     def safeGetOne(self, pageTag: Tag | BeautifulSoup, selector: str) -> Tag | str:
         childObj: ResultSet[Tag] | None
         childObj = pageTag.select_one(selector)
-        if childObj is not None and len(childObj) > 0:
+        if childObj is not None:
             return childObj
+        return ""
+
+    def safeGetOneText(self, pageTag: Tag | BeautifulSoup, selector: str) -> str:
+        childObj: Tag | None
+        childObj = pageTag.select_one(selector)
+        if childObj is not None:
+            return childObj.get_text()
         return ""
 
     @abstractmethod
